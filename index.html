@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرکز کانفیگ‌های وی‌پی‌ان</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/font-face.css">
+    <style>
+        * {
+            font-family: 'Vazir', sans-serif;
+        }
+        
+        .config-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+        }
+        
+        .tutorial-card:hover .tutorial-icon {
+            transform: scale(1.1);
+        }
+        
+        .config-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .tab-active {
+            color: #3b82f6;
+            border-bottom: 3px solid #3b82f6;
+        }
+        
+        .config-item:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-4 py-6">
+            <nav class="flex justify-between items-center">
+                <div class="flex items-center space-x-4 space-x-reverse">
+                    <div class="text-2xl font-bold">کانفیگ‌سنتر</div>
+                    <div class="hidden md:flex space-x-6 space-x-reverse">
+                        <a href="#home" class="hover:text-blue-200 transition">صفحه اصلی</a>
+                        <a href="#configs" class="hover:text-blue-200 transition">کانفیگ‌ها</a>
+                        <a href="#tutorials" class="hover:text-blue-200 transition">آموزش‌ها</a>
+                        <a href="#contact" class="hover:text-blue-200 transition">تماس با ما</a>
+                    </div>
+                </div>
+                <div>
+                    <a href="https://t.me/your_channel" target="_blank" class="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-blue-50 transition">
+                        کانال تلگرام
+                    </a>
+                </div>
+            </nav>
+            
+            <div class="mt-16 mb-20 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">دسترسی آزاد به اینترنت</h1>
+                <p class="text-xl md:text-2xl mb-10 max-w-3xl mx-auto">کانفیگ‌های رایگان و بروز برای دسترسی به اینترنت آزاد</p>
+                <a href="#configs" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium text-lg hover:bg-blue-50 transition inline-block">
+                    مشاهده کانفیگ‌ها
+                </a>
+            </div>
+        </div>
+        
+        <svg class="w-full h-16 text-gray-50 block" viewBox="0 0 1440 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48h1440V0c-211.52 32.053-421.507 48-631.024 48C599.461 48 389.474 32.053 0 0v48z"></path>
+        </svg>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Stats Section -->
+        <section id="home" class="mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-md p-6 text-center">
+                    <div class="text-blue-600 text-4xl font-bold mb-2">۱۰۰+</div>
+                    <div class="text-gray-600">کانفیگ فعال</div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6 text-center">
+                    <div class="text-blue-600 text-4xl font-bold mb-2">روزانه</div>
+                    <div class="text-gray-600">بروزرسانی کانفیگ‌ها</div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6 text-center">
+                    <div class="text-blue-600 text-4xl font-bold mb-2">۵+</div>
+                    <div class="text-gray-600">سرویس پشتیبانی شده</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Configs -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">آخرین کانفیگ‌ها</h2>
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="flex mb-6 border-b">
+                    <button class="tab-active px-4 py-2 font-medium" onclick="switchTab('latest')">جدیدترین</button>
+                    <button class="px-4 py-2 font-medium text-gray-500 hover:text-gray-700" onclick="switchTab('popular')">محبوب‌ترین</button>
+                </div>
+                
+                <div id="latest-configs">
+                    <div class="config-item p-4 rounded-lg flex justify-between items-center border-b">
+                        <div>
+                            <div class="font-medium">V2Ray - آلمان 🇩🇪</div>
+                            <div class="text-sm text-gray-500">بروزرسانی: امروز</div>
+                        </div>
+                        <div class="flex space-x-2 space-x-reverse">
+                            <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('v2ray-de-1')">کپی</button>
+                            <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('v2ray-de-1')">دانلود</button>
+                        </div>
+                    </div>
+                    
+                    <div class="config-item p-4 rounded-lg flex justify-between items-center border-b">
+                        <div>
+                            <div class="font-medium">NapsternetV - هلند 🇳🇱</div>
+                            <div class="text-sm text-gray-500">بروزرسانی: دیروز</div>
+                        </div>
+                        <div class="flex space-x-2 space-x-reverse">
+                            <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('napster-nl-1')">کپی</button>
+                            <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('napster-nl-1')">دانلود</button>
+                        </div>
+                    </div>
+                    
+                    <div class="config-item p-4 rounded-lg flex justify-between items-center">
+                        <div>
+                            <div class="font-medium">SSH - سنگاپور 🇸🇬</div>
+                            <div class="text-sm text-gray-500">بروزرسانی: ۲ روز پیش</div>
+                        </div>
+                        <div class="flex space-x-2 space-x-reverse">
+                            <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('ssh-sg-1')">کپی</button>
+                            <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('ssh-sg-1')">دانلود</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="popular-configs" class="hidden">
+                    <div class="config-item p-4 rounded-lg flex justify-between items-center border-b">
+                        <div>
+                            <div class="font-medium">V2Ray - آمریکا 🇺🇸</div>
+                            <div class="text-sm text-gray-500">۱۰۰۰+ استفاده</div>
+                        </div>
+                        <div class="flex space-x-2 space-x-reverse">
+                            <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('v2ray-us-1')">کپی</button>
+                            <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('v2ray-us-1')">دانلود</button>
+                        </div>
+                    </div>
+                    
+                    <div class="config-item p-4 rounded-lg flex justify-between items-center border-b">
+                        <div>
+                            <div class="font-medium">Trojan - فرانسه 🇫🇷</div>
+                            <div class="text-sm text-gray-500">۸۵۰+ استفاده</div>
+                        </div>
+                        <div class="flex space-x-2 space-x-reverse">
+                            <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('trojan-fr-1')">کپی</button>
+                            <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('trojan-fr-1')">دانلود</button>
+                        </div>
+                    </div>
+                    
+                    <div class="config-item p-4 rounded-lg flex justify-between items-center">
+                        <div>
+                            <div class="font-medium">Shadowsocks - ژاپن 🇯🇵</div>
+                            <div class="text-sm text-gray-500">۷۰۰+ استفاده</div>
+                        </div>
+                        <div class="flex space-x-2 space-x-reverse">
+                            <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('ss-jp-1')">کپی</button>
+                            <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('ss-jp-1')">دانلود</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <a href="#configs" class="text-blue-600 hover:text-blue-800 font-medium">مشاهده همه کانفیگ‌ها</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Configs Section -->
+        <section id="configs" class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">همه کانفیگ‌ها</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- V2Ray Card -->
+                <div class="config-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300 relative">
+                    <div class="config-badge bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">جدید</div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">V2Ray</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <p class="text-gray-600 mb-6">سریع‌ترین و پایدارترین کانفیگ‌های V2Ray با سرورهای اختصاصی</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full">آلمان 🇩🇪</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full">آمریکا 🇺🇸</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full">هلند 🇳🇱</span>
+                            <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full">فرانسه 🇫🇷</span>
+                        </div>
+                        <button onclick="showConfigs('v2ray')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition">مشاهده کانفیگ‌ها</button>
+                    </div>
+                </div>
+                
+                <!-- NapsternetV Card -->
+                <div class="config-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">NapsternetV</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <p class="text-gray-600 mb-6">کانفیگ‌های اختصاصی NapsternetV با سرعت بالا و پینگ پایین</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded-full">هلند 🇳🇱</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded-full">سنگاپور 🇸🇬</span>
+                            <span class="bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded-full">کانادا 🇨🇦</span>
+                        </div>
+                        <button onclick="showConfigs('napsternetv')" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 rounded-lg transition">مشاهده کانفیگ‌ها</button>
+                    </div>
+                </div>
+                
+                <!-- SSH Card -->
+                <div class="config-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold text-gray-800">SSH</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <p class="text-gray-600 mb-6">کانفیگ‌های SSH برای اتصال امن و ناشناس به اینترنت</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full">سنگاپور 🇸🇬</span>
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full">ژاپن 🇯🇵</span>
+                            <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded-full">آلمان 🇩🇪</span>
+                        </div>
+                        <button onclick="showConfigs('ssh')" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition">مشاهده کانفیگ‌ها</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tutorials Section -->
+        <section id="tutorials" class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">آموزش‌ها</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- V2RayNG Tutorial -->
+                <div class="tutorial-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="tutorial-icon bg-blue-100 p-4 rounded-full transition duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold text-center mb-2">V2RayNG</h3>
+                        <p class="text-gray-600 text-center mb-4">آموزش نصب و استفاده از V2RayNG در اندروید</p>
+                        <button onclick="showTutorial('v2rayng')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition">مشاهده آموزش</button>
+                    </div>
+                </div>
+                
+                <!-- NapsternetV Tutorial -->
+                <div class="tutorial-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="tutorial-icon bg-purple-100 p-4 rounded-full transition duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold text-center mb-2">NapsternetV</h3>
+                        <p class="text-gray-600 text-center mb-4">آموزش نصب و استفاده از NapsternetV در اندروید</p>
+                        <button onclick="showTutorial('napsternetv')" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 rounded-lg transition">مشاهده آموزش</button>
+                    </div>
+                </div>
+                
+                <!-- SSH Tutorial -->
+                <div class="tutorial-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="tutorial-icon bg-green-100 p-4 rounded-full transition duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold text-center mb-2">SSH</h3>
+                        <p class="text-gray-600 text-center mb-4">آموزش نصب و استفاده از SSH در اندروید</p>
+                        <button onclick="showTutorial('ssh')" class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded-lg transition">مشاهده آموزش</button>
+                    </div>
+                </div>
+                
+                <!-- Outline Tutorial -->
+                <div class="tutorial-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                    <div class="p-6">
+                        <div class="flex justify-center mb-4">
+                            <div class="tutorial-icon bg-yellow-100 p-4 rounded-full transition duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-lg font-bold text-center mb-2">Outline</h3>
+                        <p class="text-gray-600 text-center mb-4">آموزش نصب و استفاده از Outline در اندروید</p>
+                        <button onclick="showTutorial('outline')" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-2 rounded-lg transition">مشاهده آموزش</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Tips Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">نکات امنیتی</h2>
+            
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex items-start space-x-4 space-x-reverse">
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">استفاده قانونی</h3>
+                            <p class="text-gray-600">از کانفیگ‌ها تنها برای دسترسی به محتوای قانونی استفاده کنید.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4 space-x-reverse">
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">حریم خصوصی</h3>
+                            <p class="text-gray-600">برای حفظ حریم خصوصی، لوکیشن مرورگر را غیرفعال کنید.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4 space-x-reverse">
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">بروزرسانی منظم</h3>
+                            <p class="text-gray-600">برای اطمینان از عملکرد بهتر، همیشه از آخرین نسخه کانفیگ‌ها استفاده کنید.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start space-x-4 space-x-reverse">
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold mb-2">امنیت بیشتر</h3>
+                            <p class="text-gray-600">از آنتی‌ویروس و فایروال مناسب در کنار وی‌پی‌ان استفاده کنید.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="mb-16">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">تماس با ما</h2>
+            
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">راه‌های ارتباطی</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <div class="bg-blue-100 p-2 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <a href="mailto:info@example.com" class="text-blue-600 hover:text-blue-800">info@example.com</a>
+                            </div>
+                            
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <div class="bg-blue-100 p-2 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                                    </svg>
+                                </div>
+                                <a href="https://t.me/your_channel" target="_blank" class="text-blue-600 hover:text-blue-800">کانال تلگرام</a>
+                            </div>
+                            
+                            <div class="flex items-center space-x-3 space-x-reverse">
+                                <div class="bg-blue-100 p-2 rounded-full">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <a href="https://t.me/your_bot" target="_blank" class="text-blue-600 hover:text-blue-800">ربات تلگرام</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">پیام سریع</h3>
+                        <form id="contact-form" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">نام</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="نام خود را وارد کنید">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">ایمیل</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="ایمیل خود را وارد کنید">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">پیام</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="پیام خود را وارد کنید"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded-lg transition">ارسال پیام</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">کانفیگ‌سنتر</h3>
+                    <p class="text-gray-400">ارائه‌دهنده کانفیگ‌های رایگان و بروز برای دسترسی به اینترنت آزاد</p>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">لینک‌های مفید</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">صفحه اصلی</a></li>
+                        <li><a href="#configs" class="text-gray-400 hover:text-white transition">کانفیگ‌ها</a></li>
+                        <li><a href="#tutorials" class="text-gray-400 hover:text-white transition">آموزش‌ها</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">تماس با ما</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">اشتراک در خبرنامه</h3>
+                    <p class="text-gray-400 mb-4">برای دریافت آخرین کانفیگ‌ها در خبرنامه ما عضو شوید</p>
+                    <form class="flex">
+                        <input type="email" placeholder="ایمیل خود را وارد کنید" class="px-4 py-2 rounded-r-lg w-full focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-l-lg transition">عضویت</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© ۱۴۰۲ کانفیگ‌سنتر - تمامی حقوق محفوظ است.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Config Modal -->
+    <div id="config-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 id="config-modal-title" class="text-xl font-bold">کانفیگ‌های V2Ray</h3>
+                    <button onclick="closeModal('config-modal')" class="text-gray-500 hover:text-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <div id="config-modal-content" class="space-y-4">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button onclick="closeModal('config-modal')" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-4 py-2 rounded-lg transition">بستن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tutorial Modal -->
+    <div id="tutorial-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 id="tutorial-modal-title" class="text-xl font-bold">آموزش V2RayNG</h3>
+                    <button onclick="closeModal('tutorial-modal')" class="text-gray-500 hover:text-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <div id="tutorial-modal-content" class="space-y-6">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+                
+                <div class="mt-6 text-center">
+                    <button onclick="closeModal('tutorial-modal')" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-4 py-2 rounded-lg transition">بستن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        کانفیگ با موفقیت کپی شد!
+    </div>
+
+    <script>
+        // Tab Switching
+        function switchTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-active');
+            tabs.forEach(tab => tab.classList.remove('tab-active'));
+            
+            const clickedTab = event.currentTarget;
+            clickedTab.classList.add('tab-active');
+            
+            if (tabName === 'latest') {
+                document.getElementById('latest-configs').classList.remove('hidden');
+                document.getElementById('popular-configs').classList.add('hidden');
+            } else {
+                document.getElementById('latest-configs').classList.add('hidden');
+                document.getElementById('popular-configs').classList.remove('hidden');
+            }
+        }
+        
+        // Config Functions
+        function copyConfig(configId) {
+            // In a real implementation, this would copy the actual config
+            // For demo purposes, we'll just show a toast
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+        
+        function downloadConfig(configId) {
+            // In a real implementation, this would download the config file
+            // For demo purposes, we'll create a simple text file
+            const configContent = `Sample config content for ${configId}`;
+            const blob = new Blob([configContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${configId}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        // Modal Functions
+        function showConfigs(type) {
+            const modal = document.getElementById('config-modal');
+            const title = document.getElementById('config-modal-title');
+            const content = document.getElementById('config-modal-content');
+            
+            // Set title based on type
+            if (type === 'v2ray') {
+                title.textContent = 'کانفیگ‌های V2Ray';
+            } else if (type === 'napsternetv') {
+                title.textContent = 'کانفیگ‌های NapsternetV';
+            } else if (type === 'ssh') {
+                title.textContent = 'کانفیگ‌های SSH';
+            }
+            
+            // Generate content based on type
+            let configsHTML = '';
+            
+            if (type === 'v2ray') {
+                configsHTML = `
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <div class="font-medium">آلمان 🇩🇪 - سرور ۱</div>
+                                <div class="text-sm text-gray-500">بروزرسانی: امروز</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('v2ray-de-1')">کپی</button>
+                                <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('v2ray-de-1')">دانلود</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <div class="font-medium">آلمان 🇩🇪 - سرور ۲</div>
+                                <div class="text-sm text-gray-500">بروزرسانی: دیروز</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('v2ray-de-2')">کپی</button>
+                                <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('v2ray-de-2')">دانلود</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <div class="font-medium">آمریکا 🇺🇸 - سرور ۱</div>
+                                <div class="text-sm text-gray-500">بروزرسانی: امروز</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('v2ray-us-1')">کپی</button>
+                                <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('v2ray-us-1')">دانلود</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <div class="font-medium">هلند 🇳🇱 - سرور ۱</div>
+                                <div class="text-sm text-gray-500">بروزرسانی: ۲ روز پیش</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('v2ray-nl-1')">کپی</button>
+                                <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('v2ray-nl-1')">دانلود</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'napsternetv') {
+                configsHTML = `
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <div class="font-medium">هلند 🇳🇱 - سرور ۱</div>
+                                <div class="text-sm text-gray-500">بروزرسانی: امروز</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('napster-nl-1')">کپی</button>
+                                <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('napster-nl-1')">دانلود</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <div class="font-medium">سنگاپور 🇸🇬 - سرور ۱</div>
+                                <div class="text-sm text-gray-500">بروزرسانی: دیروز</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('napster-sg-1')">کپی</button>
+                                <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('napster-sg-1')">دانلود</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <div class="font-medium">کانادا 🇨🇦 - سرور ۱</div>
+                                <div class="text-sm text-gray-500">بروزرسانی: ۳ روز پیش</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('napster-ca-1')">کپی</button>
+                                <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('napster-ca-1')">دانلود</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'ssh') {
+                configsHTML = `
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <div class="font-medium">سنگاپور 🇸🇬 - سرور ۱</div>
+                                <div class="text-sm text-gray-500">بروزرسانی: امروز</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('ssh-sg-1')">کپی</button>
+                                <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('ssh-sg-1')">دانلود</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <div class="font-medium">ژاپن 🇯🇵 - سرور ۱</div>
+                                <div class="text-sm text-gray-500">بروزرسانی: دیروز</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('ssh-jp-1')">کپی</button>
+                                <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('ssh-jp-1')">دانلود</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <div>
+                                <div class="font-medium">آلمان 🇩🇪 - سرور ۱</div>
+                                <div class="text-sm text-gray-500">بروزرسانی: ۴ روز پیش</div>
+                            </div>
+                            <div class="flex space-x-2 space-x-reverse">
+                                <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded-lg text-sm hover:bg-blue-200 transition" onclick="copyConfig('ssh-de-1')">کپی</button>
+                                <button class="bg-green-100 text-green-600 px-3 py-1 rounded-lg text-sm hover:bg-green-200 transition" onclick="downloadConfig('ssh-de-1')">دانلود</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            content.innerHTML = configsHTML;
+            modal.classList.remove('hidden');
+        }
+        
+        function showTutorial(type) {
+            const modal = document.getElementById('tutorial-modal');
+            const title = document.getElementById('tutorial-modal-title');
+            const content = document.getElementById('tutorial-modal-content');
+            
+            // Set title based on type
+            if (type === 'v2rayng') {
+                title.textContent = 'آموزش V2RayNG';
+            } else if (type === 'napsternetv') {
+                title.textContent = 'آموزش NapsternetV';
+            } else if (type === 'ssh') {
+                title.textContent = 'آموزش SSH';
+            } else if (type === 'outline') {
+                title.textContent = 'آموزش Outline';
+            }
+            
+            // Generate content based on type
+            let tutorialHTML = '';
+            
+            if (type === 'v2rayng') {
+                tutorialHTML = `
+                    <div class="space-y-6">
+                        <div class="border-b pb-4">
+                            <h4 class="font-bold text-lg mb-2">۱. دانلود و نصب</h4>
+                            <p>ابتدا برنامه V2RayNG را از گوگل پلی یا مارکت‌های دیگر دانلود و نصب کنید.</p>
+                            <div class="mt-4 bg-gray-100 p-4 rounded-lg">
+                                <div class="flex items-center space-x-4 space-x-reverse">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    <div>
+                                        <div class="font-medium">دانلود V2RayNG</div>
+                                        <a href="#" class="text-blue-600 text-sm">لینک دانلود مستقیم</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-b pb-4">
+                            <h4 class="font-bold text-lg mb-2">۲. وارد کردن کانفیگ</h4>
+                            <p>پس از نصب برنامه، آن را باز کنید و با استفاده از یکی از روش‌های زیر کانفیگ را وارد کنید:</p>
+                            <ul class="list-disc mr-6 mt-2 space-y-2">
+                                <li>اسکن QR Code: روی آیکون + ضربه بزنید و گزینه "Scan QR code" را انتخاب کنید.</li>
+                                <li>وارد کردن لینک: روی آیکون + ضربه بزنید و گزینه "Import from clipboard" را انتخاب کنید.</li>
+                                <li>وارد کردن فایل: روی آیکون + ضربه بزنید و گزینه "Import config file" را انتخاب کنید.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-b pb-4">
+                            <h4 class="font-bold text-lg mb-2">۳. اتصال به سرور</h4>
+                            <p>پس از وارد کردن کانفیگ، روی آن ضربه بزنید تا انتخاب شود. سپس دکمه V شکل پایین صفحه را لمس کنید تا به سرور متصل شوید.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">۴. تست اتصال</h4>
+                            <p>برای اطمینان از اتصال صحیح، می‌توانید به سایت‌های زیر مراجعه کنید:</p>
+                            <ul class="list-disc mr-6 mt-2">
+                                <li>google.com</li>
+                                <li>youtube.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'napsternetv') {
+                tutorialHTML = `
+                    <div class="space-y-6">
+                        <div class="border-b pb-4">
+                            <h4 class="font-bold text-lg mb-2">۱. دانلود و نصب</h4>
+                            <p>ابتدا برنامه NapsternetV را از مارکت‌های معتبر دانلود و نصب کنید.</p>
+                            <div class="mt-4 bg-gray-100 p-4 rounded-lg">
+                                <div class="flex items-center space-x-4 space-x-reverse">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    <div>
+                                        <div class="font-medium">دانلود NapsternetV</div>
+                                        <a href="#" class="text-purple-600 text-sm">لینک دانلود مستقیم</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-b pb-4">
+                            <h4 class="font-bold text-lg mb-2">۲. وارد کردن کانفیگ</h4>
+                            <p>پس از نصب برنامه، آن را باز کنید و با استفاده از یکی از روش‌های زیر کانفیگ را وارد کنید:</p>
+                            <ul class="list-disc mr-6 mt-2 space-y-2">
+                                <li>اسکن QR Code: روی آیکون + ضربه بزنید و گزینه "Scan QR code" را انتخاب کنید.</li>
+                                <li>وارد کردن لینک: روی آیکون + ضربه بزنید و گزینه "Import from clipboard" را انتخاب کنید.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-b pb-4">
+                            <h4 class="font-bold text-lg mb-2">۳. اتصال به سرور</h4>
+                            <p>پس از وارد کردن کانفیگ، روی آن ضربه بزنید تا انتخاب شود. سپس دکمه اتصال را لمس کنید تا به سرور متصل شوید.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">۴. تنظیمات اضافی</h4>
+                            <p>برای بهبود عملکرد، می‌توانید تنظیمات زیر را انجام دهید:</p>
+                            <ul class="list-disc mr-6 mt-2">
+                                <li>فعال کردن حالت TCP Fast Open</li>
+                                <li>تنظیم Split Tunneling برای برنامه‌های خاص</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'ssh') {
+                tutorialHTML = `
+                    <div class="space-y-6">
+                        <div class="border-b pb-4">
+                            <h4 class="font-bold text-lg mb-2">۱. دانلود و نصب</h4>
+                            <p>ابتدا یک برنامه SSH مانند ConnectBot یا JuiceSSH را از گوگل پلی دانلود و نصب کنید.</p>
+                            <div class="mt-4 bg-gray-100 p-4 rounded-lg">
+                                <div class="flex items-center space-x-4 space-x-reverse">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    <div>
+                                        <div class="font-medium">دانلود ConnectBot</div>
+                                        <a href="#" class="text-green-600 text-sm">لینک دانلود مستقیم</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-b pb-4">
+                            <h4 class="font-bold text-lg mb-2">۲. ایجاد اتصال جدید</h4>
+                            <p>برنامه را باز کنید و یک اتصال جدید با اطلاعات زیر ایجاد کنید:</p>
+                            <ul class="list-disc mr-6 mt-2 space-y-2">
+                                <li>آدرس سرور: آدرس IP یا دامنه سرور SSH</li>
+                                <li>پورت: معمولاً 22 (یا پورت تعیین شده)</li>
+                                <li>نام کاربری: نام کاربری SSH</li>
+                                <li>رمز عبور: رمز عبور SSH</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-b pb-4">
+                            <h4 class="font-bold text-lg mb-2">۳. تنظیم SOCKS Proxy</h4>
+                            <p>برای استفاده از SSH به عنوان پروکسی، باید تنظیمات SOCKS Proxy را انجام دهید:</p>
+                            <ul class="list-disc mr-6 mt-2 space-y-2">
+                                <li>در برنامه، گزینه "Port Forwards" را انتخاب کنید.</li>
+                                <li>یک پورت فوروارد جدید با پروتکل SOCKS ایجاد کنید.</li>
+                                <li>پورت محلی را (مثلاً 1080) تنظیم کنید.</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">۴. استفاده از پروکسی</h4>
+                            <p>حالا می‌توانید از این پروکسی در برنامه‌های دیگر استفاده کنید:</p>
+                            <ul class="list-disc mr-6 mt-2">
+                                <li>آدرس: 127.0.0.1</li>
+                                <li>پورت: 1080 (یا پورتی که تنظیم کرده‌اید)</li>
+                                <li>نوع: SOCKS5</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            } else if (type === 'outline') {
+                tutorialHTML = `
+                    <div class="space-y-6">
+                        <div class="border-b pb-4">
+                            <h4 class="font-bold text-lg mb-2">۱. دانلود و نصب</h4>
+                            <p>ابتدا برنامه Outline را از گوگل پلی یا مارکت‌های دیگر دانلود و نصب کنید.</p>
+                            <div class="mt-4 bg-gray-100 p-4 rounded-lg">
+                                <div class="flex items-center space-x-4 space-x-reverse">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    <div>
+                                        <div class="font-medium">دانلود Outline</div>
+                                        <a href="#" class="text-yellow-600 text-sm">لینک دانلود مستقیم</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="border-b pb-4">
+                            <h4 class="font-bold text-lg mb-2">۲. وارد کردن کلید دسترسی</h4>
+                            <p>پس از نصب برنامه، آن را باز کنید و کلید دسترسی را به یکی از روش‌های زیر وارد کنید:</p>
+                            <ul class="list-disc mr-6 mt-2 space-y-2">
+                                <li>کپی کردن لینک و وارد کردن در برنامه</li>
+                                <li>اسکن QR Code</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="border-b pb-4">
+                            <h4 class="font-bold text-lg mb-2">۳. اتصال به سرور</h4>
+                            <p>پس از وارد کردن کلید دسترسی، روی دکمه "Connect" ضربه بزنید تا به سرور متصل شوید.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">۴. تنظیمات اضافی</h4>
+                            <p>برای بهبود عملکرد، می‌توانید تنظیمات زیر را انجام دهید:</p>
+                            <ul class="list-disc mr-6 mt-2">
+                                <li>فعال کردن "Auto-connect on boot"</li>
+                                <li>تنظیم "Split Tunneling" برای برنامه‌های خاص</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            content.innerHTML = tutorialHTML;
+            modal.classList.remove('hidden');
+        }
+        
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('hidden');
+        }
+        
+        // Contact Form
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real implementation, this would send the form data
+            // For demo purposes, we'll just show an alert
+            alert('پیام شما با موفقیت ارسال شد!');
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e) {
+            const configModal = document.getElementById('config-modal');
+            const tutorialModal = document.getElementById('tutorial-modal');
+            
+            if (e.target === configModal) {
+                closeModal('config-modal');
+            }
+            
+            if (e.target === tutorialModal) {
+                closeModal('tutorial-modal');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'966e9110d6a50a3f',t:'MTc1MzgxMjU1OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
